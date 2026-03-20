@@ -22,7 +22,11 @@ export const metadata: Metadata = {
     title: "FLX by Kia — 1:1 Online Fitness Coaching",
     description:
       "Build muscle, lose fat, and gain confidence with Adam Kia — CPT, Nutritionist, and Online Coach.",
-    images: ["/images/hero.jpg"],
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/og-image.jpg"],
   },
 };
 
