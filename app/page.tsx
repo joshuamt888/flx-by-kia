@@ -25,13 +25,13 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90" />
         </div>
 
-        {/* Logo — top center */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20">
+        {/* Logo — top left, small and clean */}
+        <div className="absolute top-6 left-6 z-20">
           <Image
             src="/images/logo-white.jpg"
             alt="FLX by Kia"
-            width={120}
-            height={60}
+            width={48}
+            height={48}
             className="object-contain"
             priority
           />
@@ -279,7 +279,7 @@ export default function Home() {
             height={40}
             className="mx-auto mb-10 object-contain"
           />
-          <h2 className="text-6xl sm:text-8xl font-black mb-6 leading-none" style={{ fontFamily: "var(--font-heading)" }}>
+          <h2 className="text-5xl sm:text-7xl md:text-8xl font-black mb-6 leading-none" style={{ fontFamily: "var(--font-heading)" }}>
             Ready to<br />Transform?
           </h2>
           <p className="text-white/60 text-lg mb-12 max-w-lg mx-auto" style={{ fontFamily: "var(--font-body)" }}>
