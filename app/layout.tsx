@@ -42,6 +42,22 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-black text-white antialiased">
         {children}
+        {/* Scroll reveal — tiny inline script, no bundle cost */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            var els = document.querySelectorAll('.reveal');
+            if(!('IntersectionObserver' in window)){
+              els.forEach(function(el){ el.classList.add('in-view'); });
+              return;
+            }
+            var obs = new IntersectionObserver(function(entries){
+              entries.forEach(function(e){
+                if(e.isIntersecting){ e.target.classList.add('in-view'); obs.unobserve(e.target); }
+              });
+            }, { threshold: 0.08 });
+            els.forEach(function(el){ obs.observe(el); });
+          })();
+        ` }} />
       </body>
     </html>
   );
