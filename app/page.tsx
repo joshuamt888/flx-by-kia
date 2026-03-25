@@ -1,10 +1,12 @@
 import Image from "next/image";
+import Header from "./components/Header";
 import AccordionSection from "./components/AccordionSection";
 import ApplyForm from "./components/ApplyForm";
 
 export default function Home() {
   return (
     <main className="bg-black text-white overflow-x-hidden">
+      <Header />
 
       {/* ═══════════════════════════════════════════════════════
           HERO — server rendered, CSS animations only
@@ -17,7 +19,7 @@ export default function Home() {
             alt="Adam Kia — FLX by Kia"
             fill
             priority
-            className="object-cover object-center grayscale"
+            className="object-cover object-top grayscale"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/95" />
