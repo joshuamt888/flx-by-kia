@@ -362,6 +362,28 @@ export default function Home() {
         </p>
       </footer>
 
+      {/* Agency Credit */}
+      <div className="bg-zinc-950 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-2">
+          <span className="text-white/30 text-xs">Website & SEO by</span>
+          <a
+            href="https://www.steadyscaling.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src="/images/steady-scaling-logo.webp"
+              alt="Steady Scaling"
+              width={20}
+              height={20}
+              className="rounded-sm"
+            />
+            <span className="text-white/40 text-xs font-medium">Steady Scaling</span>
+          </a>
+        </div>
+      </div>
+
     </main>
   );
 }
