@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 const PROGRAM_ITEMS = [
@@ -26,16 +25,10 @@ const PROGRAM_ITEMS = [
   },
 ];
 
-function AccordionItem({
-  title,
-  body,
-}: {
-  title: string;
-  body: string;
-}) {
+function AccordionItem({ title, body }: { title: string; body: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-white/10">
+    <div>
       <button
         type="button"
         onClick={() => setOpen(!open)}
@@ -47,33 +40,26 @@ function AccordionItem({
         >
           {title}
         </span>
-        <motion.span
-          animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.25 }}
-          className="text-3xl text-white/40 ml-4 flex-shrink-0 leading-none select-none"
+        <span
+          className={`text-3xl text-white/40 ml-4 flex-shrink-0 leading-none select-none transition-transform duration-300 ${open ? "rotate-45" : "rotate-0"}`}
         >
           +
-        </motion.span>
+        </span>
       </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="body"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
+      <div
+        className="grid transition-[grid-template-rows] duration-350 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+      >
+        <div className="overflow-hidden">
+          <p
+            className={`text-white/60 leading-relaxed pb-6 pr-8 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
+            style={{ fontFamily: "var(--font-body)" }}
           >
-            <p
-              className="text-white/60 leading-relaxed pb-6 pr-8"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              {body}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {body}
+          </p>
+        </div>
+      </div>
+      <div className="h-px bg-white/10" />
     </div>
   );
 }

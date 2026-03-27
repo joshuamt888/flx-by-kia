@@ -12,16 +12,52 @@ export default function Home() {
           HERO — server rendered, CSS animations only
       ═══════════════════════════════════════════════════════ */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Background photo */}
+        {/* Background photo — single image on mobile, 3 side-by-side on desktop */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero.jpg"
-            alt="Adam Kia — FLX by Kia"
-            fill
-            priority
-            className="object-cover object-top grayscale"
-            sizes="100vw"
-          />
+          {/* Mobile: single hero */}
+          <div className="md:hidden absolute inset-0">
+            <Image
+              src="/images/hero.jpg"
+              alt="Adam Kia — FLX by Kia"
+              fill
+              priority
+              className="object-cover object-top grayscale"
+              sizes="100vw"
+            />
+          </div>
+          {/* Desktop: 3 images side by side */}
+          <div className="hidden md:flex absolute inset-0">
+            <div className="relative flex-1">
+              <Image
+                src="/images/hero2.jpg"
+                alt="Adam Kia training with dumbbells"
+                fill
+                priority
+                className="object-cover object-top grayscale"
+                sizes="33vw"
+              />
+            </div>
+            <div className="relative flex-1">
+              <Image
+                src="/images/hero.jpg"
+                alt="Adam Kia — FLX by Kia"
+                fill
+                priority
+                className="object-cover object-top grayscale"
+                sizes="33vw"
+              />
+            </div>
+            <div className="relative flex-1">
+              <Image
+                src="/images/action.jpg"
+                alt="Adam Kia at cable machine"
+                fill
+                priority
+                className="object-cover object-top grayscale"
+                sizes="33vw"
+              />
+            </div>
+          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/95" />
         </div>
 
