@@ -3,10 +3,10 @@ import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
 
 const AWS_CONFIG = {
-  region: process.env.AWS_REGION ?? "us-east-2",
+  region: (process.env.AWS_REGION ?? "us-east-2").trim(),
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? "",
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "",
+    accessKeyId: (process.env.AWS_ACCESS_KEY_ID ?? "").trim(),
+    secretAccessKey: (process.env.AWS_SECRET_ACCESS_KEY ?? "").trim(),
   },
 };
 
@@ -41,7 +41,7 @@ Submitted: ${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })
     await ses.send(
       new SendEmailCommand({
         Source: "noreply@steadyscaling.com",
-        Destination: { ToAddresses: [process.env.NOTIFY_EMAIL ?? ""] },
+        Destination: { ToAddresses: [(process.env.NOTIFY_EMAIL ?? "").trim()] },
         Message: {
           Subject: { Data: `FLX Application: ${name} — ${goal}` },
           Body: { Text: { Data: emailBody } },
@@ -52,7 +52,7 @@ Submitted: ${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })
     // Send SMS via SNS
     await sns.send(
       new PublishCommand({
-        PhoneNumber: process.env.NOTIFY_PHONE ?? "",
+        PhoneNumber: (process.env.NOTIFY_PHONE ?? "").trim(),
         Message: smsBody,
         MessageAttributes: {
           "AWS.MM.SMS.OriginationNumber": {
