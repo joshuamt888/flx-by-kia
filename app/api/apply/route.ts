@@ -35,7 +35,7 @@ Message: ${message || "None"}
 Submitted: ${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })}
     `.trim();
 
-    const smsBody = `FLX by Kia — New application from ${name}. Goal: ${goal}. Email: ${email}. Phone: ${phone || "N/A"}`;
+    const smsBody = `FLX by Kia: Your website just got a new lead! Check your email for full details. Reply STOP to opt out.`;
 
     // Send email via SES
     await ses.send(
